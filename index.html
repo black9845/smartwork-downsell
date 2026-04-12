@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Smart Work — Special Offer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0a0a0a;
+  --surface:#111;
+  --border:rgba(255,255,255,.07);
+  --muted:#555;
+  --dim:#888;
+  --text:#e8e8e8;
+  --accent:#7C3AED;
+  --accent-soft:rgba(124,58,237,.12);
+  --red:#c0392b;
+  --green:#10b981;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:0 0 80px;
+  overflow-x:hidden;
+}
+
+.topbar{
+  width:100%;
+  padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  background:var(--bg);
+}
+
+.inner{
+  width:100%;
+  max-width:400px;
+  padding:48px 24px 0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.label{
+  font-size:10px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:16px;
+  font-family:'DM Mono',monospace;
+}
+
+.headline{
+  font-size:26px;
+  font-weight:700;
+  line-height:1.3;
+  margin-bottom:12px;
+  letter-spacing:-.3px;
+  color:#fff;
+}
+.headline em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.body-text{
+  font-size:14px;
+  color:var(--dim);
+  line-height:1.7;
+  margin-bottom:40px;
+  font-weight:400;
+}
+
+.rule{
+  width:100%;
+  height:1px;
+  background:var(--border);
+  margin-bottom:32px;
+}
+
+.section-label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:14px;
+  font-family:'DM Mono',monospace;
+}
+
+.loss-list{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:40px;
+}
+.loss-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  color:var(--muted);
+  text-decoration:line-through;
+  text-decoration-color:rgba(192,57,43,.4);
+}
+.loss-dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--red);
+  opacity:.5;
+  flex-shrink:0;
+}
+
+.card{
+  width:100%;
+  border:1px solid rgba(124,58,237,.25);
+  border-radius:12px;
+  padding:28px 24px;
+  background:var(--accent-soft);
+  margin-bottom:20px;
+}
+
+.card-plan{
+  font-size:10px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  font-family:'DM Mono',monospace;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.card-plan::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:rgba(124,58,237,.15);
+}
+
+.perks{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:24px;
+}
+.perk{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:13px;
+  color:#bbb;
+  line-height:1.5;
+}
+.perk-dash{
+  width:12px;
+  height:1px;
+  background:rgba(124,58,237,.5);
+  margin-top:8px;
+  flex-shrink:0;
+}
+
+.card-divider{
+  height:1px;
+  background:rgba(124,58,237,.12);
+  margin-bottom:24px;
+}
+
+.pricing{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:6px;
+}
+.old-price{
+  font-size:13px;
+  color:var(--muted);
+  text-decoration:line-through;
+  font-family:'DM Mono',monospace;
+}
+.new-price{
+  font-size:36px;
+  font-weight:700;
+  color:#fff;
+  letter-spacing:-1px;
+  font-family:'DM Mono',monospace;
+}
+.currency{
+  font-size:15px;
+  font-weight:500;
+  color:var(--dim);
+  align-self:flex-start;
+  margin-top:5px;
+  font-family:'DM Mono',monospace;
+}
+.billing-note{
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  font-family:'DM Mono',monospace;
+}
+
+.timer{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 16px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin-bottom:24px;
+  background:rgba(255,255,255,.02);
+}
+.timer-label{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-family:'DM Mono',monospace;
+}
+.timer-count{
+  font-size:14px;
+  font-weight:500;
+  color:var(--text);
+  font-family:'DM Mono',monospace;
+  letter-spacing:1px;
+}
+
+.cta{
+  width:100%;
+  height:52px;
+  border-radius:8px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.2px;
+  border:none;
+  cursor:pointer;
+  transition:opacity .2s, transform .1s;
+  margin-bottom:12px;
+  font-family:'DM Sans',sans-serif;
+}
+.cta:hover{opacity:.85}
+.cta:active{transform:scale(.99)}
+
+.skip{
+  width:100%;
+  background:none;
+  border:none;
+  color:var(--muted);
+  font-size:12px;
+  cursor:pointer;
+  padding:8px;
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.3px;
+  transition:color .2s;
+  text-align:center;
+}
+.skip:hover{color:var(--dim)}
+
+.guarantee{
+  width:100%;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:12px;
+  color:var(--dim);
+  border-top:1px solid var(--border);
+  padding-top:24px;
+  margin-top:24px;
+  line-height:1.65;
+}
+.guarantee-mark{
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--green);
+  font-family:'DM Mono',monospace;
+  font-weight:500;
+  white-space:nowrap;
+  margin-top:2px;
+}
+
+.reviews{
+  width:100%;
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.review-label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  font-weight:500;
+}
+.review{
+  border-left:1px solid rgba(124,58,237,.2);
+  padding:0 0 0 16px;
+}
+.review-text{
+  font-size:13px;
+  color:var(--dim);
+  line-height:1.65;
+  margin-bottom:6px;
+  font-style:italic;
+}
+.review-author{
+  font-size:11px;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  letter-spacing:.5px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Smart Work — Exclusive Offer</div>
+
+<div class="inner">
+
+  <p class="label">One last thing</p>
+  <h1 class="headline">We have a<br><em>better offer</em><br>for you.</h1>
+  <p class="body-text">The Master plan wasn't the right fit — we get it. But before you continue with the free plan, take a look at this.</p>
+
+  <div class="rule"></div>
+
+  <p class="section-label">Free plan limitations</p>
+  <div class="loss-list">
+    <div class="loss-item"><div class="loss-dot"></div> Only 3 brands available for evaluation</div>
+    <div class="loss-item"><div class="loss-dot"></div> Rewards capped at $30 per product</div>
+    <div class="loss-item"><div class="loss-dot"></div> Limit of 5 evaluations per day</div>
+    <div class="loss-item"><div class="loss-dot"></div> Standard support, no priority</div>
+  </div>
+
+  <div class="timer">
+    <span class="timer-label">Offer expires in</span>
+    <span class="timer-count" id="dscnt">07:00</span>
+  </div>
+
+  <div class="card">
+    <div class="card-plan">Smart Pro</div>
+
+    <div class="perks">
+      <div class="perk"><div class="perk-dash"></div> 8 premium brands — Nike, Samsung, Sony and more</div>
+      <div class="perk"><div class="perk-dash"></div> Rewards up to 2x higher — up to $90 per product</div>
+      <div class="perk"><div class="perk-dash"></div> Priority queue over free members</div>
+      <div class="perk"><div class="perk-dash"></div> Up to 20 evaluations per day</div>
+      <div class="perk"><div class="perk-dash"></div> Priority chat support</div>
+    </div>
+
+    <div class="card-divider"></div>
+
+    <div class="pricing">
+      <span class="old-price">US$ 59.90</span>
+      <span class="new-price"><span class="currency">US$</span> 19.90</span>
+    </div>
+    <p class="billing-note">One-time payment — lifetime access</p>
+  </div>
+
+  <button class="cta">Get Smart Pro for US$ 19.90</button>
+  <button class="skip" id="skipBtn">No thanks, I'll stay on the free plan</button>
+
+  <div class="guarantee">
+    <span class="guarantee-mark">Guarantee</span>
+    <span>7-day money-back guarantee. If you are not satisfied for any reason, we refund 100% of your payment, no questions asked.</span>
+  </div>
+
+  <div class="reviews">
+    <p class="review-label">From members</p>
+    <div class="review">
+      <p class="review-text">"Recovered my investment in the first week. The brands available make a real difference."</p>
+      <p class="review-author">James T. — member since 2024</p>
+    </div>
+    <div class="review">
+      <p class="review-text">"I was on the fence but the price was fair. Now I make an extra $200 a month just evaluating products."</p>
+      <p class="review-author">Sarah M. — member since 2023</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let secs = 420;
+const el = document.getElementById('dscnt');
+const t = setInterval(() => {
+  if (secs <= 0) { clearInterval(t); el.textContent = '00:00'; return; }
+  secs--;
+  const m = Math.floor(secs / 60), s = secs % 60;
+  el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+}, 1000);
+
+document.getElementById('skipBtn').addEventListener('click', function() {
+  const confirmed = confirm('Are you sure? This offer will not be available again.');
+  if (confirmed) {
+    // window.location.href = 'thank-you.html';
+  }
+});
+</script>
+</body>
+</html>
