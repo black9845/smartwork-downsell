@@ -247,8 +247,13 @@ body{
 }
 
 .cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
   width:100%;
   height:52px;
+  box-sizing:border-box;
   border-radius:8px;
   background:var(--accent);
   color:#fff;
@@ -345,13 +350,23 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2374890842992020');
+fbq('init', '1693130895002255');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2374890842992020&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1693130895002255&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+
+  ttq.load('D7TRGFJC77U0A0BND620');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel Code -->
 </head>
 <body>
 
@@ -398,7 +413,7 @@ src="https://www.facebook.com/tr?id=2374890842992020&ev=PageView&noscript=1"
     <p class="billing-note">One-time payment — lifetime access</p>
   </div>
 
-  <button class="cta">Get Smart Pro for US$ 19.90</button>
+  <a class="cta" href="https://go.centerpag.com/PPU38CQ8MCA?upsell=true">Get Smart Pro for US$ 19.90</a>
   <button class="skip" id="skipBtn">No thanks, I'll stay on the free plan</button>
 
   <div class="guarantee">
